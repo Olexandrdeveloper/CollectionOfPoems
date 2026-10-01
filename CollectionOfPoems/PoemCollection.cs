@@ -170,5 +170,64 @@ namespace CollectionOfPoems
             }
             Console.WriteLine("Колекція віршів завантажена з файлу.");
         }
+
+        public string GenerateReportByTitle()
+        {
+            StringBuilder report = new StringBuilder();
+            report.AppendLine("Звіт за назвою віршів:");
+            foreach (var poem in Poems)
+                report.AppendLine($"Назва: {poem.Title}");
+            return report.ToString();
+        }
+
+        public string GenerateReportByAuthor()
+        {
+            StringBuilder report = new StringBuilder();
+            report.AppendLine("Звіт за авторами віршів:");
+            foreach (var poem in Poems)
+                report.AppendLine($"Автор: {poem.Author}");
+            return report.ToString();
+        }
+
+        public string GenerateReportByYear()
+        {
+            StringBuilder report = new StringBuilder();
+            report.AppendLine("Звіт за роками написання віршів:");
+            foreach (var poem in Poems)
+                report.AppendLine($"Рік: {poem.Year}");
+            return report.ToString();
+        }
+
+        public string GenerateReportByTheme()
+        {
+            StringBuilder report = new StringBuilder();
+            report.AppendLine("Звіт за темами віршів:");
+            foreach (var poem in Poems)
+                report.AppendLine($"Тема: {poem.Theme}");
+            return report.ToString();
+        }
+
+        public string GenerateReportByWordInText()
+        {
+            Console.Write("Введіть слово для пошуку у текстах віршів: ");
+            string word = Console.ReadLine() ?? string.Empty;
+            StringBuilder report = new StringBuilder();
+            report.AppendLine($"Звіт за словом \"{word}\" у текстах віршів:");
+            foreach (var poem in Poems)
+            {
+                if (poem.Text.Contains(word))
+                    report.AppendLine($"Назва: {poem.Title}, Автор: {poem.Author}");
+            }
+            return report.ToString();
+        }
+
+        public string GenerateReportByLength()
+        {
+            StringBuilder report = new StringBuilder();
+            report.AppendLine("Звіт за довжиною віршів:");
+            foreach (var poem in Poems)
+                report.AppendLine($"Назва: {poem.Title}, Довжина: {poem.Text.Length}");
+            return report.ToString();
+        }
     }
 }
